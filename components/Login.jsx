@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { Image } from "react-native";
 import { Colors } from "@/constants/Colors";
-import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 export default function Login() {
+  const router = useRouter();
+
   return (
     <View>
       <Image
@@ -35,9 +37,10 @@ export default function Login() {
           bookings, and discover unique destinations and activities tailored to
           your preferences.
         </Text>
-        <View style={styles.buttom}>
-          <Ionicons name="logo-google" size={28} color={Colors.WHITE} />
-
+        <TouchableOpacity
+          onPress={() => router.push("auth/sign-in")}
+          style={styles.buttom}
+        >
           <Text
             style={{
               color: Colors.WHITE,
@@ -46,9 +49,9 @@ export default function Login() {
               fontFamily: "outfit-bold",
             }}
           >
-            Sing In With Google
+            Get Started
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -68,9 +71,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.PRIMARY,
     borderRadius: 99,
     marginTop: "20%",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 10,
   },
 });
